@@ -1,4 +1,14 @@
-# Simple Draw
+# Simple Drawish
+
+A fork of Simple Draw by the amazing SimpleMobileTools that includes a few personal tweaks:
+1. Fullscreen (especially useful with android tablets that have that large chromeos-ish bottom bar)
+2. Relative brush size option (on by default as to not change behaviour)
+3. Much larger min max zoom
+4. Zoom relative to the centre of your screen, not 0,0 on the canvas (very useful for note taking/maths workings)
+5. Removes the bucket tool since it didn't seem to work well with Zoom.
+
+---
+
 <img alt="Logo" src="graphics/icon.png" width="120" />
 
 🎨 Are you looking for the best drawing app for your pocket? Do you want to draw something simple and easy, but you have no paper? You are in the right place!
