@@ -14,6 +14,9 @@ import android.view.WindowManager
 import android.webkit.MimeTypeMap
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.print.PrintHelper
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
@@ -73,6 +76,7 @@ class MainActivity : SimpleActivity(), CanvasListener {
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
+        setFullScreen()
 
         eyeDropper = EyeDropper(my_canvas) { selectedColor ->
             setColor(selectedColor)
@@ -678,5 +682,13 @@ class MainActivity : SimpleActivity(), CanvasListener {
             add(Release(38, R.string.release_38))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
+    }
+
+    private fun setFullScreen() {
+        // From https://developer.android.com/develop/ui/views/layout/immersive 04/02/2023
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
     }
 }
