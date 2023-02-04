@@ -477,7 +477,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
             mIgnoreTouches = true
             mWasScalingInGesture = true
             mScaleFactor *= detector.scaleFactor
-            mScaleFactor = max(0.1f, min(mScaleFactor, 10.0f))
+            mScaleFactor = max(0.0001f, min(mScaleFactor, 10000.0f))
             setBrushSize(mCurrBrushSize)
             invalidate()
             return true
