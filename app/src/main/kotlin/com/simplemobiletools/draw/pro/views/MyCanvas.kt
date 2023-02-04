@@ -25,9 +25,9 @@ import java.util.concurrent.ExecutionException
 import kotlin.math.abs
 
 class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
-    private val MIN_ERASER_WIDTH = 20f
     private val MAX_HISTORY_COUNT = 1000
     private val BITMAP_MAX_HISTORY_COUNT = 60
+    private val ERASER_WIDTH_INCREASE = 1.7f
 
     private val mScaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
 
@@ -326,8 +326,8 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private fun changePaint(paintOptions: PaintOptions) {
         mPaint.color = if (paintOptions.isEraser) mBackgroundColor else paintOptions.color
         mPaint.strokeWidth = paintOptions.strokeWidth
-        if (paintOptions.isEraser && mPaint.strokeWidth < MIN_ERASER_WIDTH) {
-            mPaint.strokeWidth = MIN_ERASER_WIDTH
+        if (paintOptions.isEraser) {
+            mPaint.strokeWidth *= ERASER_WIDTH_INCREASE
         }
     }
 
