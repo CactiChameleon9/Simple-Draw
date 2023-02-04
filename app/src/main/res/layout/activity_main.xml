@@ -36,21 +36,12 @@
                 android:id="@+id/redo"
                 android:layout_width="@dimen/normal_icon_size"
                 android:layout_height="@dimen/normal_icon_size"
-                android:layout_toStartOf="@+id/bucket_fill"
+                android:layout_toStartOf="@+id/eraser"
                 android:background="?actionBarItemBackground"
                 android:contentDescription="@string/redo"
                 android:padding="@dimen/medium_margin"
                 android:src="@drawable/ic_redo_vector"
                 android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/bucket_fill"
-                android:layout_width="@dimen/normal_icon_size"
-                android:layout_height="@dimen/normal_icon_size"
-                android:layout_toStartOf="@+id/eraser"
-                android:contentDescription="@string/bucket_fill"
-                android:padding="@dimen/medium_margin"
-                android:src="@drawable/ic_bucket_fill_vector" />
 
             <ImageView
                 android:id="@+id/eraser"

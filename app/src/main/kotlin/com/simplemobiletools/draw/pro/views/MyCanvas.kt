@@ -16,8 +16,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.extensions.contains
-import com.simplemobiletools.draw.pro.extensions.floodFill
 import com.simplemobiletools.draw.pro.interfaces.CanvasListener
 import com.simplemobiletools.draw.pro.models.CanvasOp
 import com.simplemobiletools.draw.pro.models.MyParcelable
@@ -30,7 +28,6 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val MIN_ERASER_WIDTH = 20f
     private val MAX_HISTORY_COUNT = 1000
     private val BITMAP_MAX_HISTORY_COUNT = 60
-    private val DEFAULT_FLOOD_FILL_TOLERANCE = 190
 
     private val mScaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
 
@@ -59,7 +56,6 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private var mCurrBrushSize = 0f
     private var mAllowMovingZooming = true
     private var mIsEraserOn = false
-    private var mIsBucketFillOn = false
     private var mWasMultitouch = false
     private var mIgnoreTouches = false
     private var mWasScalingInGesture = false
@@ -162,7 +158,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
                     mTouchSloppedBeforeMultitouch = false
                 }
 
-                if (!mIsBucketFillOn && (!mAllowMovingZooming || (!mScaleDetector!!.isInProgress && event.pointerCount == 1 && !mWasMultitouch))) {
+                if (!mAllowMovingZooming || (!mScaleDetector!!.isInProgress && event.pointerCount == 1 && !mWasMultitouch)) {
                     actionMove(newValueX, newValueY)
                 }
 
@@ -274,10 +270,6 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
         invalidate()
     }
 
-    fun toggleBucketFill(isBucketFillOn: Boolean) {
-        mIsBucketFillOn = isBucketFillOn
-    }
-
     fun setColor(newColor: Int) {
         mPaintOptions.color = newColor
     }
@@ -363,9 +355,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     private fun actionUp(forceLineDraw: Boolean) {
-        if (mIsBucketFillOn) {
-            bucketFill()
-        } else if (!mWasMultitouch || forceLineDraw) {
+        if (!mWasMultitouch || forceLineDraw) {
             drawADot()
         }
 
@@ -385,21 +375,6 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     private fun updateRedoVisibility(visible: Boolean = mUndoneOperations.isNotEmpty()) {
         mListener?.toggleRedoVisibility(visible)
-    }
-
-    private fun bucketFill() {
-        val touchedX = mCurX.toInt()
-        val touchedY = mCurY.toInt()
-        if (contains(touchedX, touchedY)) {
-            val bitmap = getBitmap()
-            val color = mPaintOptions.color
-
-            ensureBackgroundThread {
-                val img = bitmap.floodFill(color = color, x = touchedX, y = touchedY, tolerance = DEFAULT_FLOOD_FILL_TOLERANCE)
-                addOperation(CanvasOp.BitmapOp(img))
-                post { invalidate() }
-            }
-        }
     }
 
     private fun drawADot() {

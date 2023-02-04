@@ -63,7 +63,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
     private var lastSavePromptTS = 0L
     private var isEraserOn = false
     private var isEyeDropperOn = false
-    private var isBucketFillOn = false
     private var isImageCaptureIntent = false
     private var isEditIntent = false
     private var lastBitmapPath = ""
@@ -116,12 +115,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
         eye_dropper.setOnClickListener { eyeDropperClicked() }
         eye_dropper.setOnLongClickListener {
             toast(R.string.eyedropper)
-            true
-        }
-
-        bucket_fill.setOnClickListener { bucketFillClicked() }
-        bucket_fill.setOnLongClickListener {
-            toast(R.string.bucket_fill)
             true
         }
 
@@ -364,8 +357,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
     private fun eraserClicked() {
         if (isEyeDropperOn) {
             eyeDropperClicked()
-        } else if (isBucketFillOn) {
-            bucketFillClicked()
         }
 
         isEraserOn = !isEraserOn
@@ -394,8 +385,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
     private fun eyeDropperClicked() {
         if (isEraserOn) {
             eraserClicked()
-        } else if (isBucketFillOn) {
-            bucketFillClicked()
         }
 
         isEyeDropperOn = !isEyeDropperOn
@@ -408,27 +397,13 @@ class MainActivity : SimpleActivity(), CanvasListener {
         updateButtonStates()
     }
 
-    private fun bucketFillClicked() {
-        if (isEraserOn) {
-            eraserClicked()
-        } else if (isEyeDropperOn) {
-            eyeDropperClicked()
-        }
-
-        isBucketFillOn = !isBucketFillOn
-
-        updateButtonStates()
-        my_canvas.toggleBucketFill(isBucketFillOn)
-    }
-
     private fun updateButtonStates() {
         if (config.showBrushSize) {
-            hideBrushSettings(isEyeDropperOn || isBucketFillOn)
+            hideBrushSettings(isEyeDropperOn)
         }
 
         updateButtonColor(eraser, isEraserOn)
         updateButtonColor(eye_dropper, isEyeDropperOn)
-        updateButtonColor(bucket_fill, isBucketFillOn)
     }
 
     private fun updateButtonColor(view: ImageView, enabled: Boolean) {
@@ -629,7 +604,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
         eraser.applyColorFilter(contrastColor)
         redo.applyColorFilter(contrastColor)
         eye_dropper.applyColorFilter(contrastColor)
-        bucket_fill.applyColorFilter(contrastColor)
         if (isBlackAndWhiteTheme()) {
             stroke_width_bar.setColors(0, contrastColor, 0)
         }
