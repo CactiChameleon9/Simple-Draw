@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.activities
+package com.doapps.drawish.activities
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -28,16 +28,16 @@ import com.simplemobiletools.commons.helpers.isQPlus
 import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.FileDirItem
 import com.simplemobiletools.commons.models.Release
-import com.simplemobiletools.draw.pro.BuildConfig
-import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.dialogs.SaveImageDialog
-import com.simplemobiletools.draw.pro.extensions.config
-import com.simplemobiletools.draw.pro.helpers.EyeDropper
-import com.simplemobiletools.draw.pro.helpers.JPG
-import com.simplemobiletools.draw.pro.helpers.PNG
-import com.simplemobiletools.draw.pro.helpers.SVG
-import com.simplemobiletools.draw.pro.interfaces.CanvasListener
-import com.simplemobiletools.draw.pro.models.Svg
+import com.doapps.drawish.BuildConfig
+import com.doapps.drawish.R
+import com.doapps.drawish.dialogs.SaveImageDialog
+import com.doapps.drawish.extensions.config
+import com.doapps.drawish.helpers.EyeDropper
+import com.doapps.drawish.helpers.JPG
+import com.doapps.drawish.helpers.PNG
+import com.doapps.drawish.helpers.SVG
+import com.doapps.drawish.interfaces.CanvasListener
+import com.doapps.drawish.models.Svg
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.File

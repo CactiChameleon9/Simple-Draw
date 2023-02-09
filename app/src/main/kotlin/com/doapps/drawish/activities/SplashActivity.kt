@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.activities
+package com.doapps.drawish.activities
 
 import android.content.Intent
 import com.simplemobiletools.commons.activities.BaseSplashActivity

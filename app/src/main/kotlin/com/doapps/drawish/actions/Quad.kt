@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.actions
+package com.doapps.drawish.actions
 
 import android.graphics.Path
 import java.io.Writer

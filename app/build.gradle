@@ -12,7 +12,7 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.simplemobiletools.draw.pro"
+        applicationId "com.doapps.drawish"
         minSdkVersion 23
         targetSdkVersion 33
         versionCode 77

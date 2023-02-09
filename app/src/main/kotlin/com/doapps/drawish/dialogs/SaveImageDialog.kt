@@ -1,14 +1,14 @@
-package com.simplemobiletools.draw.pro.dialogs
+package com.doapps.drawish.dialogs
 
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.activities.SimpleActivity
-import com.simplemobiletools.draw.pro.helpers.JPG
-import com.simplemobiletools.draw.pro.helpers.PNG
-import com.simplemobiletools.draw.pro.helpers.SVG
+import com.doapps.drawish.R
+import com.doapps.drawish.activities.SimpleActivity
+import com.doapps.drawish.helpers.JPG
+import com.doapps.drawish.helpers.PNG
+import com.doapps.drawish.helpers.SVG
 import kotlinx.android.synthetic.main.dialog_save_image.view.*
 import java.io.File
 

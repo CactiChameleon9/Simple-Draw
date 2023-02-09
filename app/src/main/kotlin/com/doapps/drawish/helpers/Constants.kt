@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.helpers
+package com.doapps.drawish.helpers
 
 const val BRUSH_COLOR = "brush_color"
 const val CANVAS_BACKGROUND_COLOR = "canvas_background_color"

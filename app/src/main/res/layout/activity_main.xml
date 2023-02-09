@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.simplemobiletools.draw.pro.views.MyCanvas
+            <com.doapps.drawish.views.MyCanvas
                 android:id="@+id/my_canvas"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

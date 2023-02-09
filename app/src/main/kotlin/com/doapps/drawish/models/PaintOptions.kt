@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.models
+package com.doapps.drawish.models
 
 import android.graphics.Color
 

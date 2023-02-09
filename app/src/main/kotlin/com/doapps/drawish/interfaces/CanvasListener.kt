@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.interfaces
+package com.doapps.drawish.interfaces
 
 interface CanvasListener {
     fun toggleUndoVisibility(visible: Boolean)

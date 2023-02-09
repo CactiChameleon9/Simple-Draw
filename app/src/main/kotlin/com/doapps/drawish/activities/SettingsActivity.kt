@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.activities
+package com.doapps.drawish.activities
 
 import android.os.Bundle
 import com.simplemobiletools.commons.extensions.beVisibleIf
@@ -6,8 +6,8 @@ import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.NavigationIcon
 import com.simplemobiletools.commons.helpers.isTiramisuPlus
-import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.extensions.config
+import com.doapps.drawish.R
+import com.doapps.drawish.extensions.config
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.util.*
 
